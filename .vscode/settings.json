@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.cpp": "cpp",
+        "iostream": "cpp",
+        "vector": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "chrono": "cpp",
+        "complex": "cpp",
+        "filesystem": "cpp"
+    }
+}
