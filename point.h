@@ -1,40 +1,36 @@
+#ifndef MEAN_SHIFTCLUSTERINGPOINT_H
+#define MEAN_SHIFTCLUSTERINGPOINT_H
+
 #include <vector>
 #include <utility>
-using namespace std;
 
-class point {
+
+class Point {
 
 public:
-    explicit point(vector<float> values) : values(move(values)) {}
-
-    explicit point(const int numDimensions){
-        this->values = vector<float>(numDimensions, 0);
+    explicit Point(std::vector<float> values) : values(std::move(values)) {}
+    explicit Point(const int value_size){
+        this->values = std::vector<float>(value_size, 0);
     }
-
-    point(initializer_list<float> values) {
+    Point &operator+=(const Point &p2);
+    Point operator*(float d) const;
+    Point &operator*=(float d);
+    Point operator/(float d) const;
+    Point &operator/=(float d);
+    Point(std::initializer_list<float> values) {
         this->values.assign(values);
     }
-    point() = default;
-
-    int get_num_dimensions() const {
+    Point() = default;
+    int get_value_size() const {
         return values.size();
     }
-
-    const vector<float> &get_values() const {
+    const std::vector<float> &get_values() const {
         return values;
     }
 
-    void set_values(const vector<float> &new_val) {
-        point::values = new_val;
-    }
-
-    point &operator/=(float d);
-    point operator*(float d) const;
-    point &operator+=(const point &otherPoint);
-
-
 private:
-
-    vector<float> values;
+    std::vector<float> values;
 };
+
+#endif
 
