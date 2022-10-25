@@ -7,6 +7,13 @@
         "iosfwd": "cpp",
         "chrono": "cpp",
         "complex": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "__hash_table": "cpp",
+        "__tree": "cpp",
+        "algorithm": "cpp",
+        "cmath": "cpp",
+        "functional": "cpp",
+        "locale": "cpp",
+        "type_traits": "cpp"
     }
 }
