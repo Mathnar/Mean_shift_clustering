@@ -3,7 +3,7 @@
 using namespace std;
 
 void increasing_from10k_to_120k(const string& input_data, const string& output_data){
-    cout << "\nincreasing_from10k_to_250k" << endl;
+    cout << "\nincreasing_from10k_to_120k" << endl;
     cout << "..." << endl;
     string output_data_name = output_data + "blobs/";
     vector<string> f_name;

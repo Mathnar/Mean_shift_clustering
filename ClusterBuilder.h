@@ -7,16 +7,18 @@
 using namespace std;
 
 class ClusterBuilder {
-
 public:
 
-    ClusterBuilder(vector<Point> &zero_points, vector<Point> &shifter_pts, float cluster_th);
-    vector<Cluster> make_a_cluster();
+    ClusterBuilder(std::vector<Point> &zero_points, std::vector<Point> &moved_pts, float cluster_th);
+
+    std::vector<Cluster> make_a_cluster();
+
+
 private:
-    vector<Cluster> clusters;
-    vector<Point> zero_points;
-    vector<Point> shifted_pts;
+    std::vector<Cluster> clusters;
     float cluster_th;
+    std::vector<Point> zero_points;
+    std::vector<Point> moved_pts;
 };
 
 #endif
