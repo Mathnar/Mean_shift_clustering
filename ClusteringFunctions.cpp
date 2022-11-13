@@ -34,7 +34,7 @@ void save_exe_time(const std::string& fileName, int numThreads, float time, int 
         outputFile << numThreads << "," << time << "," << numPoints << "," << dimensions << "," << bdw << "\n";
     } else{
         std::ofstream outputFile(fileName + ".csv");
-        outputFile << "Num threads" << "," << "Time" << "," << "Num points" << "," << "Dimensions" << "," << "Num clusters" << "," << "Bandwidth" << "," << "num_cl" << "\n";
+        outputFile << "Num threads" << "," << "Time" << "," << "Num points" << "," << "Dimensions"  << "," << "Bandwidth" << "," << "num_cl" << "\n";
         outputFile << numThreads << "," << time << "," << numPoints << "," << dimensions << "," << bdw << "," << num_cl  << "\n";
     }
 }
