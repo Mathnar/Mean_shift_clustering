@@ -27,3 +27,14 @@ vector<Point> get_points_coords(const string& f){
     }
     return points;
 }
+
+void save_exe_time(const std::string& fileName, int numThreads, float time, int numPoints, int dimensions, float bdw, int num_cl){
+    if(std::experimental::filesystem::exists(fileName + ".csv")){
+        std::ofstream outputFile(fileName + ".csv", std::ios_base::app);
+        outputFile << numThreads << "," << time << "," << numPoints << "," << dimensions << "," << bdw << "\n";
+    } else{
+        std::ofstream outputFile(fileName + ".csv");
+        outputFile << "Num threads" << "," << "Time" << "," << "Num points" << "," << "Dimensions" << "," << "Num clusters" << "," << "Bandwidth" << "," << "num_cl" << "\n";
+        outputFile << numThreads << "," << time << "," << numPoints << "," << dimensions << "," << bdw << "," << num_cl  << "\n";
+    }
+}

@@ -11,7 +11,7 @@ void increasing_from10k_to_120k(const string& input_data, const string& output_d
         f_name.emplace_back(e.path().filename());
     sort(f_name.begin(), f_name.end());
     for (const auto & f : f_name) {
-        cluster_launch(BDW, input_data + f, output_data_name + "out_" + f, output_data + "ResultsSpeedUpTests");
+        cluster_launch(BDW, input_data + f, output_data + "ResultsSpeedUpTests_0");
         cout << "" << endl;
     }
 
@@ -19,13 +19,13 @@ void increasing_from10k_to_120k(const string& input_data, const string& output_d
     cout << "\n\n" << endl;
 }
 
-void cluster_launch(float btw, const string& input_data_name, const string& output_data_name, const string& timer) {
+void cluster_launch(float btw, const string& input_data_name, const string& output_data_name) {
     vector<Point> points = get_points_coords(input_data_name);
 
-    for (int t = 1; t <= omp_get_max_threads(); t++) {
+    for (int t = 2; t <= omp_get_max_threads(); t+=2) {
         float tot_time = 0;
-
-        for (int k = 0; k < NUM_TEST_ITERATIONS; k++) {
+        int n_cl = 0;
+        for (int k = 0; k < ITER; k++) {
 
             chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
 
@@ -36,8 +36,10 @@ void cluster_launch(float btw, const string& input_data_name, const string& outp
 
             ClusterBuilder cluster_builder = ClusterBuilder(points, shifted, CLUSTER_TH);
             cluster_builder.make_a_cluster();
+            n_cl = cluster_builder.get_n_cl();
             tot_time += partial_time;
         }
         cout << "\nthreads: " << t << "\nNumber of points " << points.size() << "\nTime: " << tot_time << endl;
+        save_exe_time(output_data_name, t, tot_time / ITER, points.size(), points[0].get_value_size(), btw, n_cl);
     }
 }

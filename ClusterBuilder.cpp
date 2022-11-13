@@ -7,6 +7,15 @@ ClusterBuilder::ClusterBuilder(std::vector<Point> &zero_points, std::vector<Poin
     this->cluster_th = cluster_th;
 }
 
+int ClusterBuilder::get_n_cl(){
+    return clusters.size();
+}
+
+const std::vector<Cluster> &ClusterBuilder::get_cl() const {
+    return clusters;
+}
+
+
 std::vector<Cluster> ClusterBuilder::make_a_cluster(){
 
     for (int i = 0; i < zero_points.size(); ++i) {
