@@ -5,7 +5,7 @@
 #include "Point.h"
 #include "ClusteringFunctions.h"
 using namespace std;
-#define MAX_ITER 8
+#define MAX_ITER 5
 
 vector<Point>mean_shift(const vector<Point> &points, float bdw, int t=1);
 

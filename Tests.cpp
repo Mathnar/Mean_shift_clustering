@@ -2,7 +2,33 @@
 
 using namespace std;
 
-void increasing_from10k_to_120k(const string& input_data, const string& output_data){
+
+
+/*void testBandwidth(const std::string& input_data, const std::string& output_data){
+    std::cout << "Running different bandwidth from 1.0 to 10.0" << std::endl;
+    std::string out_file = output_data + "blob_bdw/";
+
+    std::vector<std::string> f_name;
+    for (const auto & entry : std::experimental::filesystem::directory_iterator(input_data))
+        f_name.emplace_back(entry.path().filename());
+    std::sort(f_name.begin(), f_name.end());
+
+    std::vector<float> BDWS;
+    BDWS.push_back(1.0);
+    BDWS.push_back(5.0);
+    BDWS.push_back(10.0);
+    BDWS.push_back(15.0);
+
+    for(const auto bdw: BDWS) {
+        for (const auto &fl : f_name) {
+            cluster_launch(bdw, input_data + fl, output_data + "bdw_from_1_to_15");
+            std::cout << "" << std::endl;
+        }
+    }
+    std::cout << "\n\n" << std::endl;
+}*/
+
+void increasing(const string& input_data, const string& output_data){
     cout << "\nincreasing_from10k_to_120k" << endl;
     cout << "..." << endl;
     string output_data_name = output_data + "blobs/";
@@ -11,11 +37,10 @@ void increasing_from10k_to_120k(const string& input_data, const string& output_d
         f_name.emplace_back(e.path().filename());
     sort(f_name.begin(), f_name.end());
     for (const auto & f : f_name) {
-        cluster_launch(BDW, input_data + f, output_data + "ResultsSpeedUpTests_0");
+        cluster_launch(BDW, input_data + f, output_data + "from10k_to_120k");
         cout << "" << endl;
     }
 
-    cout << "---------------------------------------------------------------------------------------" << endl;
     cout << "\n\n" << endl;
 }
 
